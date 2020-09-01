@@ -25,7 +25,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifeq ($(TARGET_DEVICE),racer)
+ifeq ($(TARGET_DEVICE),burton)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
 

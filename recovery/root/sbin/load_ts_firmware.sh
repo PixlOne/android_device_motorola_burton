@@ -10,8 +10,8 @@ firmware_file=
 # Load all needed modules
 insmod $module_path/sensors_class.ko
 insmod $module_path/touchscreen_mmi.ko
-insmod $module_path/aw8695.ko
-insmod $module_path/slg5bm43670.ko
+insmod $module_path/aw8697.ko
+insmod $module_path/slg51000.ko
 insmod $module_path/utags.ko
 insmod $module_path/exfat.ko
 insmod $module_path/mmi_annotate.ko
@@ -31,4 +31,3 @@ insmod $module_path/synaptics_reflash.ko
 insmod $module_path/synaptics_testing.ko
 
 return 0
-

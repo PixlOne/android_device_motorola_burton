@@ -23,20 +23,20 @@
 # *not* include it on all devices, so it is safe even with hardware-specific
 # components.
 
-LOCAL_PATH := device/motorola/racer
+LOCAL_PATH := device/motorola/burton
 
 # Architecture
 TARGET_ARCH := arm64
-TARGET_ARCH_VARIANT := armv8-a
+TARGET_ARCH_VARIANT := armv8-2a
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
 TARGET_CPU_VARIANT := generic
 
 TARGET_2ND_ARCH := arm
-TARGET_2ND_ARCH_VARIANT := armv8-a
+TARGET_2ND_ARCH_VARIANT := armv8-2a
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := cortex-a73
+TARGET_2ND_CPU_VARIANT := cortex-a75
 
 TARGET_KERNEL_ARCH := arm64
 
@@ -44,14 +44,14 @@ ENABLE_CPUSETS := true
 ENABLE_SCHEDBOOST := true
 
 # Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := lito
+TARGET_BOOTLOADER_BOARD_NAME := kona
 TARGET_NO_BOOTLOADER := true
 TARGET_USES_UEFI := true
 
 BUILD_BROKEN_DUP_RULES := true
 
 # Kernel
-BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200,n8 androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=1 earlycon=msm_geni_serial,0x4a90000 loop.max_part=7 cgroup.memory=nokmem,nosocket androidboot.usbcontroller=4e00000.dwc3 printk.devkmsg=on  firmware_class.path=/vendor/firmware_mnt/image
+BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200,n8 androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=1 earlycon=msm_geni_serial,0x4a90000 loop.max_part=7 cgroup.memory=nokmem,nosocket androidboot.usbcontroller=4e00000.dwc3 printk.devkmsg=on firmware_class.path=/vendor/firmware_mnt/image
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 BOARD_KERNEL_PAGESIZE := 4096
@@ -63,7 +63,7 @@ BOARD_KERNEL_SECOND_OFFSET := 0x00f00000
 BOARD_RAMDISK_OFFSET       := 0x01000000
 BOARD_DTB_OFFSET           := 0x01f00000
 TARGET_KERNEL_ADDITIONAL_FLAGS := \
-    DTC=$(OUT_DIR)/../device/motorola/racer/dtc/dtc
+    DTC=$(OUT_DIR)/../device/motorola/burton/dtc/dtc
 
 TARGET_PREBUILT_DTB := $(LOCAL_PATH)/prebuilt/dtb.img
 TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/Image.gz
@@ -72,7 +72,7 @@ BOARD_PREBUILT_DTBOIMAGE := $(LOCAL_PATH)/prebuilt/dtbo.img
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
-TARGET_KERNEL_VERSION := 4.14
+TARGET_KERNEL_VERSION := 4.19
 TARGET_KERNEL_CLANG_COMPILE := true
 TARGET_KERNEL_CLANG_VERSION := r328903
 
@@ -90,9 +90,9 @@ BOARD_INCLUDE_RECOVERY_DTBO := true
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 
 # Platform
-TARGET_BOARD_PLATFORM := lito
-TARGET_BOARD_PLATFORM_GPU := qcom-adreno620
-QCOM_BOARD_PLATFORMS += lito
+TARGET_BOARD_PLATFORM := kona
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno650
+QCOM_BOARD_PLATFORMS += kona
 
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 262144
@@ -109,7 +109,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
 # Super
-BOARD_SUPER_PARTITION_SIZE := 8690597888
+BOARD_SUPER_PARTITION_SIZE := 12884901888
 BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
 BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 4341104640
 BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := \
@@ -156,6 +156,8 @@ TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_CRYPTO_FBE := true
 
 # TWRP specific build flags
+BOARD_SUPPRESS_SECURE_ERASE := true
+BOARD_HAS_NO_REAL_SDCARD := true
 RECOVERY_SDCARD_ON_DATA := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
@@ -168,18 +170,17 @@ TW_MAX_BRIGHTNESS := 255
 TW_THEME := portrait_hdpi
 TARGET_RECOVERY_DEVICE_MODULES += android.hardware.boot@1.0
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file
-TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
-TW_NO_SCREEN_BLANK := true
+TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
 TW_USE_TOOLBOX := true
 BOARD_PROVIDES_GPTUTILS := true
-BOARD_SUPPRESS_SECURE_ERASE := true
 TW_EXCLUDE_TWRPAPP := true
 TW_HAS_EDL_MODE := true
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
 TW_NO_USB_STORAGE := true
 PLATFORM_VERSION := 16.1.0
-TW_Y_OFFSET := 89
-TW_H_OFFSET := -89
+TW_Y_OFFSET := 100
+TW_H_OFFSET := -100
+LZMA_RAMDISK_TARGETS := recovery
 
 ALLOW_MISSING_DEPENDENCIES := true

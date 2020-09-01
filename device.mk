@@ -1,8 +1,8 @@
 
-LOCAL_PATH := device/motorola/racer
+LOCAL_PATH := device/motorola/burton
 
 # define hardware platform
-PRODUCT_PLATFORM := lito
+PRODUCT_PLATFORM := kona
 
 #TEST
 # A/B support
@@ -25,8 +25,8 @@ PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-impl-wrapper.recovery \
     android.hardware.boot@1.0-impl-wrapper \
     android.hardware.boot@1.0-impl-recovery \
-    bootctrl.lito \
-    bootctrl.lito.recovery \
+    bootctrl.kona \
+    bootctrl.kona.recovery \
 
 PRODUCT_HOST_PACKAGES += \
     libandroidicu
@@ -34,4 +34,3 @@ PRODUCT_HOST_PACKAGES += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
-
